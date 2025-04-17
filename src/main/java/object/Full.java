@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @Builder
 public class Full {
-
     private String workoutDate;
     private String workoutTime;
     private String workoutName;

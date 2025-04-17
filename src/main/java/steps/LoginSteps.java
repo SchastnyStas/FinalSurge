@@ -11,8 +11,8 @@ public class LoginSteps extends BaseSteps {
                 .login(email, password);
     }
 
-    @Step("Waiting for the calendar button to be visible")
+    @Step("Check calendar button is visible")
     public boolean isElementVisibleCalendarButton() {
-        return dashboardPage.waitForViewCalendarButton();
+        return dashboardPage.isVisibleCalendarButton();
     }
 }

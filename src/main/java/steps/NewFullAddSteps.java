@@ -1,17 +1,16 @@
 package steps;
 
+import io.qameta.allure.Step;
 import object.Full;
-import object.Quick;
-import pages.NewFullAddWindow;
-import pages.NewQuickAddWindow;
 
 public class NewFullAddSteps extends BaseSteps {
-    public NewFullAddWindow createFullAdd(Full full) {
+
+    @Step("Create new full event")
+    public void addNewFull(Full full) {
         dashboardPage
                 .goToCalendarPage()
                 .goToFullAddPage()
                 .goToNewFullAddWindow()
                 .addNewFull(full);
-        return new NewFullAddWindow();
     }
 }

@@ -1,15 +1,17 @@
 package tests;
 
 import object.Quick;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class NewQuickAddTest extends BaseTest {
+
     @Test
     public void quickAddCreate() {
+        SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()
                 .workoutDate("4/17/2025")
                 .workoutTime("12:00 PM")
@@ -25,6 +27,7 @@ public class NewQuickAddTest extends BaseTest {
         String workoutDay = String.valueOf(date.getDayOfMonth());
         newQuickAddSteps
                 .createNewQuick(quick);
-        Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
+        softAssert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
+        softAssert.assertAll();
     }
 }

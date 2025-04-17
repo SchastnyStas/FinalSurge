@@ -1,23 +1,27 @@
 package steps;
 
-import pages.CalendarPage;
-import pages.DashboardPage;
-import pages.LoginPage;
-import pages.WorkoutDetailsPage;
+import pages.*;
 
-public class BaseSteps{
+public class BaseSteps {
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
-    //protected NewQuickAddSteps newQuickAddSteps;
     protected CalendarPage calendarPage;
-    protected WorkoutDetailsPage workoutDetailsPage;
+    protected TopNavigationMenu workoutDetailsPage;
+    protected SettingsPage settingsPage;
+    protected EditProfilePage editProfilePage;
+    protected LogoutPage logoutPage;
+    protected FeedbackPage feedbackPage;
+    protected CustomerSupportPage customerSupportPage;
 
     public BaseSteps() {
         this.loginPage = new LoginPage();
         this.dashboardPage = new DashboardPage();
-       // this.newQuickAddSteps = new NewQuickAddSteps();
         this.calendarPage = new CalendarPage();
-        this.workoutDetailsPage = new WorkoutDetailsPage();
+        this.workoutDetailsPage = new TopNavigationMenu();
+        this.settingsPage = new SettingsPage();
+        this.editProfilePage = new EditProfilePage();
+        this.logoutPage = new LogoutPage();
+        this.feedbackPage = new FeedbackPage();
+        this.customerSupportPage = new CustomerSupportPage();
     }
-
 }

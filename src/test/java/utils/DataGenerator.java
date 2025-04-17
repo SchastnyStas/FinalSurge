@@ -3,13 +3,14 @@ package utils;
 import com.github.javafaker.Faker;
 
 public class DataGenerator {
-    public static String generateRandomEmail() {
+
+    public static String generateRandomName() {
         Faker faker = new Faker();
-        return faker.internet().emailAddress();
+        return faker.name().firstName();
     }
 
-    public static String generateRandomPassword() {
+    public static String generateRandomSentence() {
         Faker faker = new Faker();
-        return faker.internet().password();
+        return faker.lorem().sentence();
     }
 }

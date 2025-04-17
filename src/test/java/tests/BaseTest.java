@@ -5,8 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.BeforeMethod;
-import pages.DashboardPage;
+import pages.SettingsPage;
 import steps.*;
+import utils.DataGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,13 +19,21 @@ public class BaseTest {
     public static String EMAIL = PropertyReader.getProperty("email");
     public static String PASSWORD = PropertyReader.getProperty("password");
 
-
     protected LoginSteps loginSteps;
     protected DashboardSteps dashboardSteps;
     protected NewQuickAddSteps newQuickAddSteps;
     protected CalendarSteps calendarSteps;
     protected NewFullAddSteps newFullAddSteps;
-    protected WorkoutDetailsSteps workoutDetailsSteps;
+    protected TopNavigationSteps workoutDetailsSteps;
+    protected SettingsNavigateSteps settingsNavigateSteps;
+    protected MainLogoNavigateSteps mainLogoNavigateSteps;
+    protected CurrentDateSteps currentDateSteps;
+    protected ChangeProfileSettingsSteps changProfileSettingsSteps;
+    protected DataGenerator dataGenerator;
+    protected SettingsPage settingsPage;
+    protected LogoutSteps logoutSteps;
+    protected SendFeedbackSteps sendFeedbackSteps;
+    protected CustomerSupportSteps customerSupportSteps;
 
     public void initPage() {
 
@@ -33,7 +42,16 @@ public class BaseTest {
         newQuickAddSteps = new NewQuickAddSteps();
         calendarSteps = new CalendarSteps();
         newFullAddSteps = new NewFullAddSteps();
-        workoutDetailsSteps = new WorkoutDetailsSteps();
+        workoutDetailsSteps = new TopNavigationSteps();
+        settingsNavigateSteps = new SettingsNavigateSteps();
+        mainLogoNavigateSteps = new MainLogoNavigateSteps();
+        currentDateSteps = new CurrentDateSteps();
+        changProfileSettingsSteps = new ChangeProfileSettingsSteps();
+        dataGenerator = new DataGenerator();
+        settingsPage = new SettingsPage();
+        logoutSteps = new LogoutSteps();
+        sendFeedbackSteps = new SendFeedbackSteps();
+        customerSupportSteps = new CustomerSupportSteps();
     }
 
     @BeforeMethod
@@ -45,12 +63,12 @@ public class BaseTest {
         prefs.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", prefs);
         WebDriver driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         setWebDriver(driver);
 
         Configuration.browser = "chrome";
         Configuration.timeout = 15000;
         Configuration.headless = false;
-        Configuration.browserSize = "1024x768";
         initPage();
         loginSteps.login(LOGIN_URL, EMAIL, PASSWORD);
     }

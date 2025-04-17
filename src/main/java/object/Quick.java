@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 @Builder
-
 public class Quick {
     private String workoutDate;
     private String workoutTime;

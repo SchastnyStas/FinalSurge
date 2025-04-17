@@ -6,16 +6,17 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class ElementExtensions {
 
-    public static SelenideElement getButtonByType(String type) {
-        return $x("//button[type()='" + type + "']");
+    public static SelenideElement getElementByHref(String href) {
+        return $x("//*[@href='" + href + "']");
     }
 
     public static SelenideElement getButtonByText(String text) {
         return $x("//button[text()='" + text + "']");
     }
 
-    public static SelenideElement getButtonById(String text) {
-        return $x("//*[@id='" + text + "']");
+    public static SelenideElement getElementById(String id) {
+
+        return $x("//*[@id='" + id + "']");
     }
 
     public static SelenideElement getInputByName(String name) {
@@ -25,23 +26,20 @@ public class ElementExtensions {
     public static SelenideElement getSelectById(String id) {
         return $x("//select[@id='" + id + "']");
     }
-    public static SelenideElement getOptionByText(String text) {
-        return $x("//option[text()='" + text + "']");
-    }
-    public static SelenideElement getAccordionByDataCode(String dataCode){
+
+    public static SelenideElement getElementByDataCode(String dataCode) {
         return $x("//*[@data-code='" + dataCode + "']");
     }
 
-    public static SelenideElement getButtonByClass(String byClass){
+    public static SelenideElement getElementByClass(String byClass) {
         return $x("//*[@class='" + byClass + "']");
     }
 
-    public static SelenideElement getButtonByDataLabel(String dataLabel){
+    public static SelenideElement getElementByDataLabel(String dataLabel) {
         return $x("//*[@data-label='" + dataLabel + "']");
     }
 
-    public static SelenideElement getLabelByText(String text){
+    public static SelenideElement getLabelByText(String text) {
         return $x("//label[span[text()='" + text + "']]");
     }
-
 }

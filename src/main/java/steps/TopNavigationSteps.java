@@ -3,9 +3,9 @@ package steps;
 import io.qameta.allure.Step;
 import pages.CalendarPage;
 
-public class WorkoutDetailsSteps extends BaseSteps {
+public class TopNavigationSteps extends BaseSteps {
     @Step("Go to calendar page")
     public CalendarPage isElementVisibleSteps() {
-       return workoutDetailsPage.goToCalendarPage();
+        return workoutDetailsPage.goToCalendarPage();
     }
 }

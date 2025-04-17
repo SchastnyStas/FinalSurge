@@ -1,15 +1,17 @@
 package tests;
 
 import object.Quick;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class UpcomingWorkoutsTest extends BaseTest {
+
     @Test
     public void quickAddCreate() {
+        SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()
                 .workoutDate("4/25/2025")
                 .workoutTime("12:00 PM")
@@ -27,8 +29,10 @@ public class UpcomingWorkoutsTest extends BaseTest {
 
         newQuickAddSteps
                 .createNewQuick(quick);
-        Assert.assertTrue(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
+        softAssert.assertTrue(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
         workoutDetailsSteps.isElementVisibleSteps();
-        calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
+        calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
+        softAssert.assertFalse(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
+        softAssert.assertAll();
     }
 }

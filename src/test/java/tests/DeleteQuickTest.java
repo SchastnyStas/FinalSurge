@@ -1,16 +1,17 @@
 package tests;
 
 import object.Quick;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DeleteQuickTest extends BaseTest{
+public class DeleteQuickTest extends BaseTest {
 
     @Test
     public void quickAddDelete() {
+        SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()
                 .workoutDate("4/11/2025")
                 .workoutTime("12:00 PM")
@@ -28,6 +29,7 @@ public class DeleteQuickTest extends BaseTest{
                 .createNewQuick(quick);
         workoutDetailsSteps.isElementVisibleSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
-        Assert.assertFalse(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
+        softAssert.assertFalse(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
+        softAssert.assertAll();
     }
 }

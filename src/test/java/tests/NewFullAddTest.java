@@ -1,8 +1,8 @@
 package tests;
 
 import object.Full;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +11,7 @@ public class NewFullAddTest extends BaseTest {
 
     @Test
     public void fullAddCreate() {
+        SoftAssert softAssert = new SoftAssert();
         Full full = Full.builder()
                 .workoutDate("4/10/2025")
                 .workoutTime("06:30 AM")
@@ -25,8 +26,9 @@ public class NewFullAddTest extends BaseTest {
         LocalDate date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
         String workoutDay = String.valueOf(date.getDayOfMonth());
         newFullAddSteps
-                .createFullAdd(full);
+                .addNewFull(full);
         workoutDetailsSteps.isElementVisibleSteps();
-        Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
+        softAssert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
+        softAssert.assertAll();
     }
 }

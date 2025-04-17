@@ -1,8 +1,9 @@
-package pages;
+package windows;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import object.Quick;
+import pages.BasePage;
 
 import static elements.ElementExtensions.*;
 
@@ -16,7 +17,7 @@ public class NewQuickAddWindow extends BasePage {
     public static final SelenideElement DIST_TYPE_SELECT = getSelectById("DistType");
     public static final SelenideElement HOW_FEEL_SELECT = getSelectById("HowFeel");
     public static final SelenideElement PER_EFFORT_SELECT = getSelectById("PerEffort");
-    public static final SelenideElement ADD_WORKOUT_BUTTON = getButtonById("saveButton");
+    public static final SelenideElement ADD_WORKOUT_BUTTON = getElementById("saveButton");
 
     public void addNewQuick(Quick quick) {
         DATE_INPUT.setValue(quick.getWorkoutDate());

@@ -1,8 +1,9 @@
-package pages;
+package windows;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import object.Full;
+import pages.BasePage;
 
 import static elements.ElementExtensions.*;
 
@@ -19,7 +20,7 @@ public class NewFullAddWindow extends BasePage {
     //public static final SelenideElement HOW_FEEL_SELECT = getLabelByText("Great");
 
     public static final SelenideElement PER_EFFORT_SELECT = getSelectById("PerEffort");
-    public static final SelenideElement ADD_WORKOUT_BUTTON = getButtonById("saveButton");
+    public static final SelenideElement ADD_WORKOUT_BUTTON = getElementById("saveButton");
 
 
     public void addNewFull(Full full) {
@@ -30,10 +31,8 @@ public class NewFullAddWindow extends BasePage {
         ELEVATION_GAIN_INPUT.setValue(full.getElevationGain());
         ELEVATION_LOSS_INPUT.setValue(full.getElevationLoss());
         DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(full.getDistType());
-
         //HOW_FEEL_SELECT.setValue(full.getHowFeel()).click();
         getLabelByText(full.getHowFeel()).click();
-
         PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(full.getPerEffort());
         ADD_WORKOUT_BUTTON.click();
     }
