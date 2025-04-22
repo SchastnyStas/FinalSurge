@@ -5,7 +5,7 @@ import io.qameta.allure.Step;
 public class MainLogoNavigateSteps extends BaseSteps {
 
     @Step("Go to dashboard page via main logo and check if page is loaded")
-    public boolean goToDashboardPage() {
+    public boolean goToDashboardPageAndCheck() {
         dashboardPage.goToCalendarPage();
         calendarPage.clickOnMainLogo();
         return dashboardPage.isVisibleCalendarButton();

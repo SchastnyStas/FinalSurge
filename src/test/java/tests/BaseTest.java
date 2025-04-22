@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.SettingsPage;
 import steps.*;
@@ -12,6 +13,7 @@ import utils.DataGenerator;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
@@ -28,7 +30,7 @@ public class BaseTest {
     protected SettingsNavigateSteps settingsNavigateSteps;
     protected MainLogoNavigateSteps mainLogoNavigateSteps;
     protected CurrentDateSteps currentDateSteps;
-    protected ChangeProfileSettingsSteps changProfileSettingsSteps;
+    protected ChangeProfileSettingsSteps changeProfileSettingsSteps;
     protected DataGenerator dataGenerator;
     protected SettingsPage settingsPage;
     protected LogoutSteps logoutSteps;
@@ -46,7 +48,7 @@ public class BaseTest {
         settingsNavigateSteps = new SettingsNavigateSteps();
         mainLogoNavigateSteps = new MainLogoNavigateSteps();
         currentDateSteps = new CurrentDateSteps();
-        changProfileSettingsSteps = new ChangeProfileSettingsSteps();
+        changeProfileSettingsSteps = new ChangeProfileSettingsSteps();
         dataGenerator = new DataGenerator();
         settingsPage = new SettingsPage();
         logoutSteps = new LogoutSteps();
@@ -73,8 +75,8 @@ public class BaseTest {
         loginSteps.login(LOGIN_URL, EMAIL, PASSWORD);
     }
 
-//    @AfterMethod
-//    public void endTest() {
-//        getWebDriver().quit();
-//    }
+    @AfterMethod
+    public void endTest() {
+        getWebDriver().quit();
+    }
 }

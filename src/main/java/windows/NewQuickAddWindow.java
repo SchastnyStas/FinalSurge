@@ -30,11 +30,11 @@ public class NewQuickAddWindow extends BasePage {
 
         DISTANCE_INPUT.setValue(quick.getDistance());
 
-        DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(quick.getDistType());
+        DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(quick.getDistType().getValue());
 
-        HOW_FEEL_SELECT.shouldBe(Condition.visible).selectOption(quick.getHowFeel());
+        HOW_FEEL_SELECT.shouldBe(Condition.visible).selectOption(quick.getHowFeel().getValue());
 
-        PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(quick.getPerEffort());
+        PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(quick.getPerEffort().getValue());
 
         ADD_WORKOUT_BUTTON.click();
 

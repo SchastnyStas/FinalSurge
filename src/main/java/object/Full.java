@@ -1,6 +1,9 @@
 package object;
 
 import com.github.javafaker.Faker;
+import enums.DistType;
+import enums.HowFeel;
+import enums.PerceivedEffort;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,15 +14,15 @@ public class Full {
     private String workoutTime;
     private String workoutName;
     private String distance;
-    private String distType;
+    private DistType distType;
     private String elevationGain;
     private String elevationLoss;
-    private String howFeel;
-    private String perEffort;
+    private HowFeel howFeel;
+    private PerceivedEffort perEffort;
 
     public Full(String workoutDate, String workoutTime, String workoutName, String distance,
-                String distType, String elevationGain, String elevationLoss, String howFeel,
-                String perEffort) {
+                DistType distType, String elevationGain, String elevationLoss, HowFeel howFeel,
+                PerceivedEffort perEffort) {
         this.workoutDate = workoutDate;
         this.workoutTime = workoutTime;
         this.workoutName = (workoutName == null || workoutName.isEmpty()) ? new Faker().lorem().word() : workoutName;

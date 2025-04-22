@@ -1,6 +1,9 @@
 package object;
 
 import com.github.javafaker.Faker;
+import enums.DistType;
+import enums.HowFeel;
+import enums.PerceivedEffort;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,12 +15,12 @@ public class Quick {
     private String activityType;
     private String workoutName;
     private String distance;
-    private String distType;
-    private String howFeel;
-    private String perEffort;
+    private DistType distType;
+    private HowFeel howFeel;
+    private PerceivedEffort perEffort;
 
     public Quick(String workoutDate, String workoutTime, String activityType, String workoutName, String distance,
-                 String distType, String howFeel, String perEffort) {
+                 DistType distType, HowFeel howFeel, PerceivedEffort perEffort) {
         this.workoutDate = workoutDate;
         this.workoutTime = workoutTime;
         this.activityType = activityType;

@@ -1,0 +1,68 @@
+package tests;
+
+import enums.DistType;
+import enums.HowFeel;
+import enums.PerceivedEffort;
+import object.Quick;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class WorkoutListTest extends BaseTest {
+
+    @Test(testName = "Check event is displayed in recent past workouts")
+    public void checkRecentWorkouts() {
+        SoftAssert softAssert = new SoftAssert();
+        Quick quick = Quick.builder()
+                .workoutDate("4/10/2025")
+                .workoutTime("12:00 PM")
+                .activityType("Run")
+                .workoutName("")
+                .distance("")
+                .distType(DistType.YD)
+                .howFeel(HowFeel.TERRIBLE)
+                .perEffort(PerceivedEffort.TENMAXEFFORT)
+                .build();
+
+        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
+                "/yyyy"));
+        String workoutDay = String.valueOf(date.getDayOfMonth());
+
+        newQuickAddSteps
+                .createNewQuick(quick);
+        softAssert.assertTrue(dashboardSteps.isEventVisibleInRecentPastWorkout(quick.getWorkoutName()));
+        workoutDetailsSteps.isElementVisibleSteps();
+        calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
+        softAssert.assertFalse(dashboardSteps.isEventVisibleInRecentPastWorkout(quick.getWorkoutName()));
+        softAssert.assertAll();
+    }
+
+    @Test(testName = "Check event is displayed in upcoming workouts")
+    public void checkUpcomingWorkouts() {
+        SoftAssert softAssert = new SoftAssert();
+        Quick quick = Quick.builder()
+                .workoutDate("4/25/2025")
+                .workoutTime("12:00 PM")
+                .activityType("Run")
+                .workoutName("")
+                .distance("")
+                .distType(DistType.M)
+                .howFeel(HowFeel.POOR)
+                .perEffort(PerceivedEffort.ONEVERYLIGHT)
+                .build();
+
+        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
+                "/yyyy"));
+        String workoutDay = String.valueOf(date.getDayOfMonth());
+
+        newQuickAddSteps
+                .createNewQuick(quick);
+        softAssert.assertTrue(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
+        workoutDetailsSteps.isElementVisibleSteps();
+        calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
+        softAssert.assertFalse(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
+        softAssert.assertAll();
+    }
+}

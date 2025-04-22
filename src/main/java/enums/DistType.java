@@ -1,7 +1,17 @@
 package enums;
 
-import lombok.Data;
+import lombok.Getter;
 
+@Getter
 public enum DistType {
-    MI, KM, M, YD
+    MI("mi"),
+    KM("km"),
+    M("m"),
+    YD("yd");
+
+    private final String value;
+
+    DistType(String value) {
+        this.value = value;
+    }
 }

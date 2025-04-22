@@ -1,20 +1,26 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import static utils.DataGenerator.generateRandomSentence;
 
 public class CustomerSupportTest extends BaseTest {
 
-    @Test
+    @Test(testName = "Send to Customer Support")
     public void sendCustomerSupport() {
-        SoftAssert softAssert = new SoftAssert();
-
         String select = "Apple Mobile App";
         String text = generateRandomSentence();
-        customerSupportSteps.sendSupport(select, text);
-        softAssert.assertTrue(customerSupportSteps.checkText());
-        softAssert.assertAll();
+        customerSupportSteps.sendMessageToSupport(select, text);
+        Assert.assertTrue(customerSupportSteps.checkSuccessMessage());
+    }
+
+    @Test(testName = "Send feedback")
+    public void sendFeedback() {
+        String select = "Feature Improvement";
+        String text = generateRandomSentence();
+
+        sendFeedbackSteps.sendFeedback(select, text);
+        Assert.assertTrue(sendFeedbackSteps.checkText());
     }
 }

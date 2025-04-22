@@ -4,19 +4,24 @@ import io.qameta.allure.Step;
 
 public class ChangeProfileSettingsSteps extends BaseSteps {
 
-    @Step("Chang profile first name")
-    public void changFirstName(String newFirstName) {
+    @Step("Change profile first name")
+    public void changeFirstName(String newFirstName) {
         dashboardPage.goToSettingPage();
         settingsPage.goToEditProfilePage();
         editProfilePage.changeFirstName(newFirstName);
     }
 
-    @Step("Chang profile image")
+    @Step("Change profile image")
     public void changeImage(String picture) {
         dashboardPage.goToSettingPage();
         settingsPage
                 .goToEditProfilePage()
                 .changeImage(picture);
+    }
+
+    @Step("Get user name")
+    public String getUserName() {
+        return settingsPage.getUserInfo();
     }
 
     @Step("Check the visibility of the image")

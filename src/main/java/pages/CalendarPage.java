@@ -5,7 +5,8 @@ import com.codeborne.selenide.SelenideElement;
 import windows.NewQuickAddWindow;
 
 import static com.codeborne.selenide.Selenide.$x;
-import static elements.ElementExtensions.*;
+import static elements.ElementExtensions.getElementByClass;
+import static elements.ElementExtensions.getElementById;
 
 public class CalendarPage extends TopNavigationMenu {
     private static final SelenideElement QUICK_ADD_BUTTON = getElementById("QuickAddToggle");
@@ -48,6 +49,5 @@ public class CalendarPage extends TopNavigationMenu {
         GO_TO_DASHBOARD_BUTTON.scrollIntoCenter().click();
         return new DashboardPage();
     }
-
 }
 
