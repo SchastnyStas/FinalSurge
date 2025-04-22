@@ -52,4 +52,17 @@ public final class PropertyReader {
     public static String getProperty(String propertyName) {
         return loadProperties().getProperty(propertyName);
     }
+
+    public static void writePropertiesToFile(String email, String password, String filePath) {
+        Properties props = new Properties();
+        props.setProperty("loginUrl", "https://log.finalsurge.com");
+        props.setProperty("email", email);
+        props.setProperty("password", password);
+
+        try (java.io.OutputStream out = new java.io.FileOutputStream(filePath)) {
+            props.store(out, "Updated by Jenkins build");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
