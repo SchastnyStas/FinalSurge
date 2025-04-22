@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class FullWorkoutTest extends BaseTest {
 
-    @Test(testName = "Check full workout event can be created and displayed for day")
+    @Test(description = "Check full workout event can be created and displayed for day")
     public void fullAddCreate() {
         Full full = Full.builder()
                 .workoutDate("4/10/2025")
@@ -33,7 +33,7 @@ public class FullWorkoutTest extends BaseTest {
         calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
     }
 
-    @Test(testName = "Delete full workout event for the day and check it's not displayed")
+    @Test(description = "Delete full workout event for the day and check it's not displayed")
     public void fullAddDelete() {
         Full full = Full.builder()
                 .workoutDate("4/5/2025")

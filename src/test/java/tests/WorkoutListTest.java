@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class WorkoutListTest extends BaseTest {
 
-    @Test(testName = "Check event is displayed in recent past workouts")
+    @Test(description = "Check event is displayed in recent past workouts")
     public void checkRecentWorkouts() {
         SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()
@@ -39,7 +39,7 @@ public class WorkoutListTest extends BaseTest {
         softAssert.assertAll();
     }
 
-    @Test(testName = "Check event is displayed in upcoming workouts")
+    @Test(description = "Check event is displayed in upcoming workouts")
     public void checkUpcomingWorkouts() {
         SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()

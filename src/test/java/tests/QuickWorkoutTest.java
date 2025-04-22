@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 
 public class QuickWorkoutTest extends BaseTest {
 
-    @Test(testName = "Check quick workout event can be created and displayed for day")
+    @Test(description = "Check quick workout event can be created and displayed for day")
     public void quickAddCreate() {
         Quick quick = Quick.builder()
                 .workoutDate("4/17/2025")
@@ -33,7 +33,7 @@ public class QuickWorkoutTest extends BaseTest {
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
     }
 
-    @Test(testName = "Delete quick workout event for the day and check it's not displayed")
+    @Test(description = "Delete quick workout event for the day and check it's not displayed")
     public void quickAddDelete() {
         Quick quick = Quick.builder()
                 .workoutDate("4/11/2025")

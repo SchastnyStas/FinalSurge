@@ -7,7 +7,7 @@ import static utils.DataGenerator.generateRandomSentence;
 
 public class CustomerSupportTest extends BaseTest {
 
-    @Test(testName = "Send to Customer Support")
+    @Test(description = "Send to Customer Support")
     public void sendCustomerSupport() {
         String select = "Apple Mobile App";
         String text = generateRandomSentence();
@@ -15,7 +15,7 @@ public class CustomerSupportTest extends BaseTest {
         Assert.assertTrue(customerSupportSteps.checkSuccessMessage());
     }
 
-    @Test(testName = "Send feedback")
+    @Test(description = "Send feedback")
     public void sendFeedback() {
         String select = "Feature Improvement";
         String text = generateRandomSentence();
