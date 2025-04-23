@@ -18,7 +18,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 
-//@Listeners(TestListener.class)
 public class BaseTest {
     public static String LOGIN_URL;
     public static String EMAIL;
