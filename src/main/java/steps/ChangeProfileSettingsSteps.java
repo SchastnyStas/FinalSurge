@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 
 public class ChangeProfileSettingsSteps extends BaseSteps {
 
-    @Step("Change profile first name to {newFirstName}")
+    @Step("Change profile first name to: {newFirstName}")
     public void changeFirstName(String newFirstName) {
         dashboardPage.goToSettingPage();
         settingsPage.goToEditProfilePage();
