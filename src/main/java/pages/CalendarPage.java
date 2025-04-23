@@ -27,10 +27,6 @@ public class CalendarPage extends TopNavigationMenu {
         return new FullAddPage();
     }
 
-    //  public boolean isElementVisible() {
-    //WORK_OUT_DETAILS.shouldBe(Condition.visible);
-//        return WORK_OUT_DETAILS.getText();
-//    }
     public boolean checkEventIsPresentForDay(String day, String event) {
         return $x(String.format(EVENT_PRESENT_DETAILS, day, event))
                 .isDisplayed();

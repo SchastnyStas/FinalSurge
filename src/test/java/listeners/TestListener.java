@@ -18,19 +18,17 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        log.info(String.format("======================================== FINISHED TEST %s Duration: %ss ========================================", iTestResult.getName(),
-                getExecutionTime(iTestResult)));
+        log.info("======================================== FINISHED TEST {} Duration: {}s ========================================", iTestResult.getName(), getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        log.info(String.format("======================================== FAILED TEST %s Duration: %ss ========================================", iTestResult.getName(),
-                getExecutionTime(iTestResult)));
+        log.info("======================================== FAILED TEST {} Duration: {}s ========================================", iTestResult.getName(), getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-        log.info(String.format("======================================== SKIPPING TEST %s ========================================", iTestResult.getName()));
+        log.info("======================================== SKIPPING TEST {} ========================================", iTestResult.getName());
     }
 
     @Override

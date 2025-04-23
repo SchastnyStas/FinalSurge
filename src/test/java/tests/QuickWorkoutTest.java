@@ -27,8 +27,8 @@ public class QuickWorkoutTest extends BaseTest {
         LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
                 "/yyyy"));
         String workoutDay = String.valueOf(date.getDayOfMonth());
-        newQuickAddSteps
-                .createNewQuick(quick);
+
+        newQuickAddSteps.createNewQuick(quick);
         Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
     }
@@ -48,6 +48,7 @@ public class QuickWorkoutTest extends BaseTest {
         LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
                 "/yyyy"));
         String workoutDay = String.valueOf(date.getDayOfMonth());
+
         newQuickAddSteps.createNewQuick(quick);
         workoutDetailsSteps.isElementVisibleSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());

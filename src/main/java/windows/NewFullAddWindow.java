@@ -16,12 +16,8 @@ public class NewFullAddWindow extends BasePage {
     public static final SelenideElement ELEVATION_GAIN_INPUT = getInputByName("EGain");
     public static final SelenideElement ELEVATION_LOSS_INPUT = getInputByName("ELoss");
     public static final SelenideElement DIST_TYPE_SELECT = getSelectById("DistType");
-
-    //public static final SelenideElement HOW_FEEL_SELECT = getLabelByText("Great");
-
     public static final SelenideElement PER_EFFORT_SELECT = getSelectById("PerEffort");
     public static final SelenideElement ADD_WORKOUT_BUTTON = getElementById("saveButton");
-
 
     public void addNewFull(Full full) {
         DATE_INPUT.setValue(full.getWorkoutDate());

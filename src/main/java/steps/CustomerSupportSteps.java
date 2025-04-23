@@ -10,6 +10,7 @@ public class CustomerSupportSteps extends BaseSteps {
         customerSupportPage.sendMessenger(reason, text);
     }
 
+    @Step("Check success message is displayed")
     public boolean checkSuccessMessage() {
         return customerSupportPage.isDisplayedTextAfterSend();
     }

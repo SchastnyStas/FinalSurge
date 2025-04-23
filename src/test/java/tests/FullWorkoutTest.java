@@ -27,6 +27,7 @@ public class FullWorkoutTest extends BaseTest {
                 .build();
         LocalDate date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
         String workoutDay = String.valueOf(date.getDayOfMonth());
+
         newFullAddSteps.addNewFull(full);
         workoutDetailsSteps.isElementVisibleSteps();
         Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
@@ -48,6 +49,7 @@ public class FullWorkoutTest extends BaseTest {
                 .build();
         LocalDate date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
         String workoutDay = String.valueOf(date.getDayOfMonth());
+
         newFullAddSteps.addNewFull(full);
         workoutDetailsSteps.isElementVisibleSteps();
         calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());

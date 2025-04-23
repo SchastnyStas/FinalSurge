@@ -17,12 +17,9 @@ public class EditProfilePage extends TopNavigationMenu {
             "saveButtonProfile");
     public static final SelenideElement CLICK_CHANGE_IMAGE_BUTTON = getElementById(
             "EditProfilePicOther");
-    public static final SelenideElement CLICK_SELECT = getInputByName("profilepic");
-    //  public static final SelenideElement UPLOAD_BUTTON = getButtonById("NextStep");
     public static final SelenideElement UPLOAD_BUTTON = $x("//*[@id='NextStep' and text()='Upload']");
     public static final SelenideElement SAVE_BUTTON = $x("//*[@id='NextStep' and text()='Save']");
     public static final SelenideElement FILE_INPUT = $("input[type='file']");
-    public static final SelenideElement LOADING_SPINNER = getElementById("AjaxGrey1");
     public static final SelenideElement PROFILE_PICTURE = getElementById("LayoutProfilePic");
     public static final SelenideElement REMOVE_IMAGE_BUTTON = getElementById("del-pic");
     public static final SelenideElement REMOVE_IMAGE_OK_BUTTON = $x("//*[@class='modal-footer']//*[@class='btn btn-primary']");
@@ -43,17 +40,14 @@ public class EditProfilePage extends TopNavigationMenu {
         switchTo().defaultContent();
 
         UPLOAD_BUTTON.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
-        //LOADING_SPINNER.shouldNotBe(Condition.visible, Duration.ofSeconds(10));
         Selenide.sleep(5000);
         SAVE_BUTTON.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
         return this;
     }
 
     public String getImgScr() {
-        //Selenide.sleep(5000);
         return PROFILE_PICTURE.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .getAttribute("src");
-        //return PROFILE_PICTURE.shouldBe(Condition.visible, Duration.ofSeconds(10)).getText();
     }
 
     public EditProfilePage refreshEditPage() {

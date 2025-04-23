@@ -11,6 +11,7 @@ public class CustomerSupportTest extends BaseTest {
     public void sendCustomerSupport() {
         String select = "Apple Mobile App";
         String text = generateRandomSentence();
+
         customerSupportSteps.sendMessageToSupport(select, text);
         Assert.assertTrue(customerSupportSteps.checkSuccessMessage());
     }
@@ -21,6 +22,6 @@ public class CustomerSupportTest extends BaseTest {
         String text = generateRandomSentence();
 
         sendFeedbackSteps.sendFeedback(select, text);
-        Assert.assertTrue(sendFeedbackSteps.checkText());
+        Assert.assertTrue(sendFeedbackSteps.checkSuccessMessageIsDisplayed());
     }
 }

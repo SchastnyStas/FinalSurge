@@ -16,7 +16,6 @@ public class TopBarTest extends BaseTest {
 
     @Test(description = "Go to settings pages and check if page is loaded")
     public void goToSettingPage() {
-        //loginSteps.isElementVisibleCalendarButton();
         Assert.assertTrue(settingsNavigateSteps.goToSettingsPageAndCheck());
     }
 

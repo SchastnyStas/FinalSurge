@@ -10,6 +10,8 @@ import org.testng.asserts.SoftAssert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import static tests.TestConstants.DATE_TIME_FORMATTER;
+
 public class WorkoutListTest extends BaseTest {
 
     @Test(description = "Check event is displayed in recent past workouts")
@@ -25,13 +27,10 @@ public class WorkoutListTest extends BaseTest {
                 .howFeel(HowFeel.TERRIBLE)
                 .perEffort(PerceivedEffort.TENMAXEFFORT)
                 .build();
-
-        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
-                "/yyyy"));
+        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DATE_TIME_FORMATTER);
         String workoutDay = String.valueOf(date.getDayOfMonth());
 
-        newQuickAddSteps
-                .createNewQuick(quick);
+        newQuickAddSteps.createNewQuick(quick);
         softAssert.assertTrue(dashboardSteps.isEventVisibleInRecentPastWorkout(quick.getWorkoutName()));
         workoutDetailsSteps.isElementVisibleSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
@@ -52,13 +51,10 @@ public class WorkoutListTest extends BaseTest {
                 .howFeel(HowFeel.POOR)
                 .perEffort(PerceivedEffort.ONEVERYLIGHT)
                 .build();
-
-        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
-                "/yyyy"));
+        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DATE_TIME_FORMATTER);
         String workoutDay = String.valueOf(date.getDayOfMonth());
 
-        newQuickAddSteps
-                .createNewQuick(quick);
+        newQuickAddSteps.createNewQuick(quick);
         softAssert.assertTrue(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
         workoutDetailsSteps.isElementVisibleSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();

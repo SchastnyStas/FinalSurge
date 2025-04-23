@@ -11,7 +11,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import pages.SettingsPage;
 import steps.*;
-import utils.DataGenerator;
 
 import java.util.HashMap;
 import java.util.Map;
