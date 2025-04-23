@@ -1,12 +1,14 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import pages.SettingsPage;
 import steps.*;
 import utils.DataGenerator;
@@ -17,11 +19,11 @@ import java.util.Map;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
-
+@Listeners(TestListener.class)
 public class BaseTest {
-    public static String LOGIN_URL;
-    public static String EMAIL;
-    public static String PASSWORD;
+    public static String EMAIL = PropertyReader.getProperty("email");
+    public static String PASSWORD = PropertyReader.getProperty("password");
+    public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
 
     protected LoginSteps loginSteps;
     protected DashboardSteps dashboardSteps;
@@ -39,19 +41,7 @@ public class BaseTest {
     protected SendFeedbackSteps sendFeedbackSteps;
     protected CustomerSupportSteps customerSupportSteps;
 
-    @BeforeSuite
-    public void updateConfigFile() {
-        String email = System.getProperty("email");
-        String password = System.getProperty("password");
-        String path = "src/test/resources/config.properties";
-        PropertyReader.writePropertiesToFile(email, password, path);
-        LOGIN_URL = PropertyReader.getProperty("loginUrl");
-        EMAIL = email;
-        PASSWORD = password;
-    }
-
     public void initPage() {
-
         loginSteps = new LoginSteps();
         dashboardSteps = new DashboardSteps();
         newQuickAddSteps = new NewQuickAddSteps();
