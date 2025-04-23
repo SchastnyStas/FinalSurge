@@ -5,7 +5,7 @@ import pages.CalendarPage;
 
 public class CalendarSteps extends BaseSteps {
 
-    @Step("Check event is present for day")
+    @Step("Check {event} event is present for {day} day")
     public boolean isElementVisibleSteps(String day, String event) {
         return calendarPage.checkEventIsPresentForDay(day, event);
     }
