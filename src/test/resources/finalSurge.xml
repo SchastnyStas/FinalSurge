@@ -6,11 +6,11 @@
         <classes>
             <class name="tests.ChangeProfileDataTest"/>
             <class name="tests.CustomerSupportTest"/>
-<!--            <class name="tests.FullWorkoutTest"/>-->
-<!--            <class name="tests.LoginTest"/>-->
-<!--            <class name="tests.QuickWorkoutTest"/>-->
-<!--            <class name="tests.TopBarTest"/>-->
-<!--            <class name="tests.WorkoutListTest"/>-->
+            <class name="tests.FullWorkoutTest"/>
+           <class name="tests.LoginTest"/>
+            <class name="tests.QuickWorkoutTest"/>
+            <class name="tests.TopBarTest"/>
+            <class name="tests.WorkoutListTest"/>
         </classes>
     </test>
 </suite>
