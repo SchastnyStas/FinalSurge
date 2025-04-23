@@ -4,10 +4,10 @@ import io.qameta.allure.Step;
 
 public class CustomerSupportSteps extends BaseSteps {
 
-    @Step("Send to Customer Support")
-    public void sendMessageToSupport(String select, String text) {
+    @Step("Send message to Customer Support")
+    public void sendMessageToSupport(String reason, String text) {
         dashboardPage.goToSupportPage();
-        customerSupportPage.sendMessenger(select, text);
+        customerSupportPage.sendMessenger(reason, text);
     }
 
     public boolean checkSuccessMessage() {

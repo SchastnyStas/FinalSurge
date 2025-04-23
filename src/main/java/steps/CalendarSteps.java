@@ -2,7 +2,6 @@ package steps;
 
 import io.qameta.allure.Step;
 import pages.CalendarPage;
-import pages.DashboardPage;
 
 public class CalendarSteps extends BaseSteps {
 
@@ -11,13 +10,8 @@ public class CalendarSteps extends BaseSteps {
         return calendarPage.checkEventIsPresentForDay(day, event);
     }
 
-    @Step("Delete event for the day")
+    @Step("Delete {event} event for the {day} day")
     public CalendarPage deleteEventForDay(String day, String event) {
         return calendarPage.deleteEventForDay(day, event);
-    }
-
-    @Step("Go to dashboard page")
-    public DashboardPage goToDashboardPage() {
-        return calendarPage.goToDashboardPage();
     }
 }

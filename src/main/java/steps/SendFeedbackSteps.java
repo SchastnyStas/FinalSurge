@@ -5,9 +5,9 @@ import io.qameta.allure.Step;
 public class SendFeedbackSteps extends BaseSteps {
 
     @Step("Send feedback")
-    public void sendFeedback(String select, String text) {
+    public void sendFeedback(String reason, String text) {
         dashboardPage.goToFeedback();
-        feedbackPage.sendFeedback(select, text);
+        feedbackPage.sendFeedback(reason, text);
     }
 
     public boolean checkText() {

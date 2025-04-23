@@ -31,7 +31,6 @@ public class NewFullAddWindow extends BasePage {
         ELEVATION_GAIN_INPUT.setValue(full.getElevationGain());
         ELEVATION_LOSS_INPUT.setValue(full.getElevationLoss());
         DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(full.getDistType().getValue());
-        //HOW_FEEL_SELECT.setValue(full.getHowFeel()).click();
         getLabelByText(full.getHowFeel().getValue()).click();
         PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(full.getPerEffort().getValue());
         ADD_WORKOUT_BUTTON.click();

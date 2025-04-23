@@ -21,22 +21,13 @@ public class NewQuickAddWindow extends BasePage {
 
     public void addNewQuick(Quick quick) {
         DATE_INPUT.setValue(quick.getWorkoutDate());
-
         TIME_OF_DAY.setValue(quick.getWorkoutTime());
-
         ACTIVITY_TYPE_SELECT.shouldBe(Condition.visible).selectOption(quick.getActivityType());
-
         WORKOUT_NAME_INPUT.setValue(quick.getWorkoutName());
-
         DISTANCE_INPUT.setValue(quick.getDistance());
-
         DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(quick.getDistType().getValue());
-
         HOW_FEEL_SELECT.shouldBe(Condition.visible).selectOption(quick.getHowFeel().getValue());
-
         PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(quick.getPerEffort().getValue());
-
         ADD_WORKOUT_BUTTON.click();
-
     }
 }

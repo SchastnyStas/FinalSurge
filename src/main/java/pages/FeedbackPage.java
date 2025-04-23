@@ -13,8 +13,8 @@ public class FeedbackPage extends TopNavigationMenu {
     private static final SelenideElement SEND_FEEDBACK_BUTTON = getElementById("submitButton");
     private static final SelenideElement GET_TEXT_AFTER_SEND_FEEDBACK = $x("//*[@class='alert alert-success']");
 
-    public void sendFeedback(String select, String text) {
-        FEEDBACK_REASON_SELECT.selectOption(select);
+    public void sendFeedback(String reason, String text) {
+        FEEDBACK_REASON_SELECT.selectOption(reason);
         YOUR_FEEDBACK_TEXT.setValue(text);
         SEND_FEEDBACK_BUTTON.click();
     }

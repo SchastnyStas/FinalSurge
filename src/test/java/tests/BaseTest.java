@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import io.qameta.allure.Step;
 import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -78,6 +79,7 @@ public class BaseTest {
     }
 
     @AfterMethod
+    @Step("Close web driver")
     public void endTest() {
         getWebDriver().quit();
     }
