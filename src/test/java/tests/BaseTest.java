@@ -35,7 +35,6 @@ public class BaseTest {
     protected MainLogoNavigateSteps mainLogoNavigateSteps;
     protected CurrentDateSteps currentDateSteps;
     protected ChangeProfileSettingsSteps changeProfileSettingsSteps;
-    protected DataGenerator dataGenerator;
     protected SettingsPage settingsPage;
     protected LogoutSteps logoutSteps;
     protected SendFeedbackSteps sendFeedbackSteps;
@@ -52,7 +51,6 @@ public class BaseTest {
         mainLogoNavigateSteps = new MainLogoNavigateSteps();
         currentDateSteps = new CurrentDateSteps();
         changeProfileSettingsSteps = new ChangeProfileSettingsSteps();
-        dataGenerator = new DataGenerator();
         settingsPage = new SettingsPage();
         logoutSteps = new LogoutSteps();
         sendFeedbackSteps = new SendFeedbackSteps();
@@ -73,7 +71,6 @@ public class BaseTest {
 
         Configuration.browser = "chrome";
         Configuration.timeout = 15000;
-        Configuration.headless = false;
         initPage();
         loginSteps.login(LOGIN_URL, EMAIL, PASSWORD);
     }
