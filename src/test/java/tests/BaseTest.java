@@ -7,7 +7,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import pages.SettingsPage;
 import steps.*;
@@ -21,8 +20,8 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 @Listeners(TestListener.class)
 public class BaseTest {
-    public static String EMAIL = PropertyReader.getProperty("email");
-    public static String PASSWORD = PropertyReader.getProperty("password");
+    public static String EMAIL = System.getProperty("email");
+    public static String PASSWORD = System.getProperty("password");
     public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
 
     protected LoginSteps loginSteps;
