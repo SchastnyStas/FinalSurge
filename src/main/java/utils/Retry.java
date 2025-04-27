@@ -1,8 +1,10 @@
 package utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 
+@Slf4j
 public class Retry implements IRetryAnalyzer {
 
     private static final int MAX_RETRY = 2;
@@ -14,13 +16,15 @@ public class Retry implements IRetryAnalyzer {
             if (attempt < MAX_RETRY) {
                 attempt++;
                 iTestResult.setStatus(ITestResult.FAILURE);
-                System.out.println("Retrying once again");
+                log.warn("Test failed. Retrying the test");
                 return true;
             } else {
                 iTestResult.setStatus(ITestResult.FAILURE);
+                log.info("No more retrying attempts");
             }
         } else {
             iTestResult.setStatus(ITestResult.SUCCESS);
+            log.info("Test succeed");
         }
         return false;
     }

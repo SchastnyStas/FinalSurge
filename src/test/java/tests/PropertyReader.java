@@ -1,16 +1,18 @@
 package tests;
 
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+@Slf4j
+@NoArgsConstructor
 public final class PropertyReader {
     private static String propertiesPath = "/config.properties";
     private static volatile Properties properties;
     private static InputStream inputStream;
-
-    private PropertyReader() {
-    }
 
     private static String getCorrectPath() {
         if (propertiesPath.charAt(0) != '/')
@@ -21,6 +23,7 @@ public final class PropertyReader {
     public static Properties readProperties() {
         properties = new Properties();
         try {
+            log.info("Reading the resource");
             inputStream = PropertyReader.class.getResourceAsStream(getCorrectPath());
             if (inputStream != null)
                 properties.load(inputStream);

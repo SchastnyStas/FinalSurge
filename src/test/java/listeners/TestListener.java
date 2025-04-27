@@ -29,6 +29,7 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         log.info("======================================== FAILED TEST {} Duration: {}s ========================================", iTestResult.getName(), getExecutionTime(iTestResult));
+        log.info("Retrieving failure screenshot");
         takeScreenshot(iTestResult);
     }
 
@@ -39,17 +40,14 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
     }
 
     @Override
     public void onStart(ITestContext iTestContext) {
-
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-
     }
 
     private long getExecutionTime(ITestResult iTestResult) {
