@@ -22,7 +22,6 @@ public class DashboardPage extends TopNavigationMenu {
     private static final SelenideElement CLICK_FEEDBACK_BUTTON = findElementByHref("Feedback.cshtml");
     private static final SelenideElement CLICK_CUSTOMER_SUPPORT_BUTTON = findElementByHref("CustSupport.cshtml");
 
-
     /**
      * Checks if the project calendar button is displayed on the page.
      *
@@ -33,16 +32,36 @@ public class DashboardPage extends TopNavigationMenu {
                 .isDisplayed();
     }
 
+    /**
+     * Checks if the upcoming workout event is displayed on the page.
+     *
+     * @param workoutName the name of the workout event to check for visibility
+     * @return {@code true} if the specified workout event is visible on the page,
+     *         {@code false} otherwise
+     */
     public boolean checkUpcomingWorkoutsVisible(String workoutName) {
         UPCOMING_WORKOUTS_BUTTON.shouldBe(Condition.visible).click();
         return $x(String.format(GET_UPCOMING_WORKOUTS_EVENT, workoutName)).is(Condition.visible, Duration.of(2, SECONDS));
     }
 
+    /**
+     * Checks if the recent past workout event is displayed in the list.
+     *
+     * @param workoutName the name of the workout event to check for visibility
+     * @return {@code true} if the specified workout event is visible in the list,
+     *         {@code false} otherwise
+     */
     public boolean openRecentPastWorkoutsList(String workoutName) {
         RECENT_PAST_WORKOUTS_BUTTON.shouldBe(Condition.visible).click();
         return $x(String.format(GET_RECENT_PAST_WORKOUTS_EVENT, workoutName)).is(Condition.visible, Duration.of(2, SECONDS));
     }
 
+    /**
+     * Retrieves the current date displayed on the page.
+     *
+     * @return the current date as a {@code String} if it can be retrieved;
+     *         an empty {@code String} if there is an error retrieving the date.
+     */
     public String getCurrentDate() {
         try {
             log.info("Getting the current date.");
@@ -53,11 +72,21 @@ public class DashboardPage extends TopNavigationMenu {
         }
     }
 
+    /**
+     * Navigates to the feedback page.
+     *
+     * @return a new instance of {@link FeedbackPage} after navigating to the feedback page.
+     */
     public FeedbackPage goToFeedback() {
         CLICK_FEEDBACK_BUTTON.click();
         return new FeedbackPage();
     }
 
+    /**
+     * Navigates to the customer support page.
+     *
+     * @return a new instance of {@link CustomerSupportPage} after navigating to the customer support page.
+     */
     public CustomerSupportPage goToSupportPage() {
         CLICK_CUSTOMER_SUPPORT_BUTTON.click();
         return new CustomerSupportPage();

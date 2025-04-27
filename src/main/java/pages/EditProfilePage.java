@@ -67,11 +67,19 @@ public class EditProfilePage extends TopNavigationMenu {
                 .getAttribute("src");
     }
 
+    /**
+     * Refreshes the current edit profile page.
+     *
+     * @return a new instance of {@link EditProfilePage} after the page refresh
+     */
     public EditProfilePage refreshEditPage() {
         Selenide.refresh();
         return new EditProfilePage();
     }
 
+    /**
+     * Delete profile image.
+     */
     public void removeProfileImage() {
         REMOVE_IMAGE_BUTTON.click();
         REMOVE_IMAGE_OK_BUTTON.click();

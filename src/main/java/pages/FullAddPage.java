@@ -8,7 +8,6 @@ import static elements.ElementExtensions.findElementByDataCode;
 public class FullAddPage extends TopNavigationMenu {
     private static final SelenideElement SELECT_ACTIVITY_TYPE = findElementByDataCode("bike");
 
-
     /**
      * Open full add workout window.
      *

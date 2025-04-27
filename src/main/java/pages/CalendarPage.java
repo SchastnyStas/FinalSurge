@@ -17,21 +17,45 @@ public class CalendarPage extends TopNavigationMenu {
     private static final SelenideElement QUICK_DELETE_CONFIRM_BUTTON = findElementByClass("btn btn-primary");
     private static final SelenideElement GO_TO_DASHBOARD_BUTTON = $x("//*[@class='icsw16-home']");
 
+    /**
+     * Opens the quick add window.
+     *
+     * @return new {@link NewQuickAddWindow}, representing the quick add window.
+     */
     public NewQuickAddWindow goToNewQuickAddWindow() {
         QUICK_ADD_BUTTON.click();
         return new NewQuickAddWindow();
     }
 
+    /**
+     * Opens the full add window.
+     *
+     * @return new {@link FullAddPage}, representing the full add window.
+     */
     public FullAddPage goToFullAddPage() {
         FULL_ADD_BUTTON.click();
         return new FullAddPage();
     }
 
+    /**
+     * Checks if an event is present on a specific day in the calendar.
+     *
+     * @param day   the day to check for the event
+     * @param event the name of the event
+     * @return {@code true} if the event is displayed for the given day; {@code false} otherwise
+     */
     public boolean checkEventIsPresentForDay(String day, String event) {
         return $x(String.format(EVENT_PRESENT_DETAILS, day, event))
                 .isDisplayed();
     }
 
+    /**
+     * Deletes an event for a specific day from the calendar.
+     *
+     * @param day   the day on which the event is scheduled
+     * @param event the name of the event to delete
+     * @return a new {@link CalendarPage} instance after the event has been deleted
+     */
     public CalendarPage deleteEventForDay(String day, String event) {
         SelenideElement eventElement = $x(String.format(EVENT_PRESENT_DETAILS, day, event));
         eventElement.shouldBe(Condition.visible).click();
@@ -40,7 +64,6 @@ public class CalendarPage extends TopNavigationMenu {
         eventElement.shouldNotBe(Condition.visible);
         return new CalendarPage();
     }
-
 
     /**
      * Clicks on the dashboard page button

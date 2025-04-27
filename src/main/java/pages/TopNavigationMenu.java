@@ -8,7 +8,6 @@ public class TopNavigationMenu extends BasePage {
 
     private static final SelenideElement GO_TO_CALENDAR_BUTTON = findElementByClass("icsw16-day-calendar");
 
-
     /**
      * Clicks on the project calendar button
      * and opens the calendar page.

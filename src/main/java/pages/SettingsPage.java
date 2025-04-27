@@ -13,15 +13,31 @@ public class SettingsPage extends TopNavigationMenu {
     private static final SelenideElement GO_TO_EDIT_PROFILE_BUTTON = findElementById("ProfileEditLink");
     private static final SelenideElement USER_INFO = $x("//*[@class='user-info']//strong");
 
+    /**
+     * Checks if the settings page is loaded by verifying the visibility of a specific element.
+     *
+     * @return {@code true} if the settings page is loaded,
+     *         {@code false} otherwise
+     */
     public boolean checkSettingsPageIsLoaded() {
         return $x("//*[@id='breadcrumbs']//span").isDisplayed();
     }
 
+    /**
+     * Navigates to the edit profile page.
+     *
+     * @return a new instance of {@link EditProfilePage} after navigating to the edit profile page
+     */
     public EditProfilePage goToEditProfilePage() {
         GO_TO_EDIT_PROFILE_BUTTON.click();
         return new EditProfilePage();
     }
 
+    /**
+     * Retrieves the user information from the user info element.
+     *
+     * @return the text content of the user info element, or an empty string if an error occurs
+     */
     public String getUserInfo() {
         try {
             log.info("Getting the current date.");

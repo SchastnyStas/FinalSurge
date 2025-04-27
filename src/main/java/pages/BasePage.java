@@ -11,7 +11,6 @@ public class BasePage {
     private static final SelenideElement LOGOUT_BUTTON = findElementByHref("logout.cshtml");
     private static final SelenideElement GO_TO_SETTINGS_BUTTON = findElementByHref("UserProfile.cshtml");
 
-
     /**
      * Clicks on the Final Surge logo on the page
      * and goes to the main (Dashboard) page.

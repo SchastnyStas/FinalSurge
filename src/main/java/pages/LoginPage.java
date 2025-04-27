@@ -12,7 +12,6 @@ public class LoginPage extends TopNavigationMenu {
     private static final SelenideElement EMAIL_INPUT = findInputByName("login_name");
     private static final SelenideElement PASSWORD_INPUT = findInputByName("login_password");
 
-
     /**
      * Open login page.
      *
@@ -24,6 +23,11 @@ public class LoginPage extends TopNavigationMenu {
         return this;
     }
 
+    /**
+     * Waits for the login page to fully load by ensuring the visibility of the "Sign In" button.
+     *
+     * @return the current {@link LoginPage} instance after confirming that the page is loaded
+     */
     public LoginPage waitForPageToLoad() {
         SIGN_IN_BUTTON.shouldBe(Condition.visible);
         return this;
