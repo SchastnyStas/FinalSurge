@@ -8,6 +8,6 @@ public class MainLogoNavigateSteps extends BaseSteps {
     public boolean goToDashboardPageAndCheck() {
         dashboardPage.goToCalendarPage();
         calendarPage.clickOnMainLogo();
-        return dashboardPage.isVisibleCalendarButton();
+        return dashboardPage.isCalendarButtonVisible();
     }
 }

@@ -13,6 +13,6 @@ public class LoginSteps extends BaseSteps {
 
     @Step("Check calendar button is visible")
     public boolean isCalendarButtonVisible() {
-        return dashboardPage.isVisibleCalendarButton();
+        return dashboardPage.isCalendarButtonVisible();
     }
 }

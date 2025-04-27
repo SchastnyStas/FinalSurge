@@ -5,16 +5,16 @@ import com.codeborne.selenide.SelenideElement;
 import windows.NewQuickAddWindow;
 
 import static com.codeborne.selenide.Selenide.$x;
-import static elements.ElementExtensions.getElementByClass;
-import static elements.ElementExtensions.getElementById;
+import static elements.ElementExtensions.findElementByClass;
+import static elements.ElementExtensions.findElementById;
 
 public class CalendarPage extends TopNavigationMenu {
-    private static final SelenideElement QUICK_ADD_BUTTON = getElementById("QuickAddToggle");
+    private static final SelenideElement QUICK_ADD_BUTTON = findElementById("QuickAddToggle");
     private static final String EVENT_PRESENT_DETAILS = "//*[@data-day='%s']//*[@data" +
             "-title='%s']";
-    private static final SelenideElement FULL_ADD_BUTTON = getElementById("FullAddBtn");
-    private static final SelenideElement QUICK_DELETE_BUTTON = getElementByClass("quick-delete");
-    private static final SelenideElement QUICK_DELETE_CONFIRM_BUTTON = getElementByClass("btn btn-primary");
+    private static final SelenideElement FULL_ADD_BUTTON = findElementById("FullAddBtn");
+    private static final SelenideElement QUICK_DELETE_BUTTON = findElementByClass("quick-delete");
+    private static final SelenideElement QUICK_DELETE_CONFIRM_BUTTON = findElementByClass("btn btn-primary");
     private static final SelenideElement GO_TO_DASHBOARD_BUTTON = $x("//*[@class='icsw16-home']");
 
     public NewQuickAddWindow goToNewQuickAddWindow() {
@@ -41,6 +41,13 @@ public class CalendarPage extends TopNavigationMenu {
         return new CalendarPage();
     }
 
+
+    /**
+     * Clicks on the dashboard page button
+     * and opens the dashboard page.
+     *
+     * @return new {@link DashboardPage}, representing a dashboard page.
+     */
     public DashboardPage goToDashboardPage() {
         GO_TO_DASHBOARD_BUTTON.scrollIntoCenter().click();
         return new DashboardPage();

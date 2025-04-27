@@ -26,7 +26,7 @@
         <!--        <suiteXmlFile>gase.xml</suiteXmlFile>-->
         <javafaker.version>1.0.2</javafaker.version>
         <kotlin.version>1.9.24</kotlin.version>
-        <aeonbits-owner.version>1.0.12</aeonbits-owner.version>
+
 
     </properties>
 
@@ -130,11 +130,6 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aeonbits.owner</groupId>
-            <artifactId>owner</artifactId>
-            <version>${aeonbits-owner.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>

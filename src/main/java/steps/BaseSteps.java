@@ -6,7 +6,7 @@ public class BaseSteps {
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
     protected CalendarPage calendarPage;
-    protected TopNavigationMenu workoutDetailsPage;
+    protected TopNavigationMenu topNavigationMenu;
     protected SettingsPage settingsPage;
     protected EditProfilePage editProfilePage;
     protected LogoutPage logoutPage;
@@ -17,7 +17,7 @@ public class BaseSteps {
         this.loginPage = new LoginPage();
         this.dashboardPage = new DashboardPage();
         this.calendarPage = new CalendarPage();
-        this.workoutDetailsPage = new TopNavigationMenu();
+        this.topNavigationMenu = new TopNavigationMenu();
         this.settingsPage = new SettingsPage();
         this.editProfilePage = new EditProfilePage();
         this.logoutPage = new LogoutPage();

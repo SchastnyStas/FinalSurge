@@ -4,14 +4,21 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.open;
-import static elements.ElementExtensions.getButtonByText;
-import static elements.ElementExtensions.getInputByName;
+import static elements.ElementExtensions.findButtonByText;
+import static elements.ElementExtensions.findInputByName;
 
 public class LoginPage extends TopNavigationMenu {
-    private static final SelenideElement SIGN_IN_BUTTON = getButtonByText("Login");
-    private static final SelenideElement EMAIL_INPUT = getInputByName("login_name");
-    private static final SelenideElement PASSWORD_INPUT = getInputByName("login_password");
+    private static final SelenideElement SIGN_IN_BUTTON = findButtonByText("Login");
+    private static final SelenideElement EMAIL_INPUT = findInputByName("login_name");
+    private static final SelenideElement PASSWORD_INPUT = findInputByName("login_password");
 
+
+    /**
+     * Open login page.
+     *
+     * @param url the url
+     * @return the login page
+     */
     public LoginPage openLoginPage(String url) {
         open(url);
         return this;
@@ -22,6 +29,13 @@ public class LoginPage extends TopNavigationMenu {
         return this;
     }
 
+    /**
+     * Open login page.
+     *
+     * @param email the email
+     * @param password the password
+     * @return new {@link DashboardPage}, which represents the main page after logging in
+     */
     public DashboardPage login(String email, String password) {
         waitForPageToLoad();
         EMAIL_INPUT.setValue(email);

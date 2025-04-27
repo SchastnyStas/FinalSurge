@@ -6,7 +6,7 @@ import pages.CalendarPage;
 public class TopNavigationSteps extends BaseSteps {
 
     @Step("Go to calendar page")
-    public CalendarPage isElementVisibleSteps() {
-        return workoutDetailsPage.goToCalendarPage();
+    public CalendarPage goToCalendarSteps() {
+        return topNavigationMenu.goToCalendarPage();
     }
 }

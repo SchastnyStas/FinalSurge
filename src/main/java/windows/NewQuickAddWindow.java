@@ -9,15 +9,15 @@ import static elements.ElementExtensions.*;
 
 public class NewQuickAddWindow extends BasePage {
 
-    public static final SelenideElement DATE_INPUT = getInputByName("WorkoutDate");
-    public static final SelenideElement TIME_OF_DAY = getInputByName("WorkoutTime");
-    public static final SelenideElement WORKOUT_NAME_INPUT = getInputByName("Name");
-    public static final SelenideElement DISTANCE_INPUT = getInputByName("Distance");
-    public static final SelenideElement ACTIVITY_TYPE_SELECT = getSelectById("ActivityType");
-    public static final SelenideElement DIST_TYPE_SELECT = getSelectById("DistType");
-    public static final SelenideElement HOW_FEEL_SELECT = getSelectById("HowFeel");
-    public static final SelenideElement PER_EFFORT_SELECT = getSelectById("PerEffort");
-    public static final SelenideElement ADD_WORKOUT_BUTTON = getElementById("saveButton");
+    private static final SelenideElement DATE_INPUT = findInputByName("WorkoutDate");
+    private static final SelenideElement TIME_OF_DAY = findInputByName("WorkoutTime");
+    private static final SelenideElement WORKOUT_NAME_INPUT = findInputByName("Name");
+    private static final SelenideElement DISTANCE_INPUT = findInputByName("Distance");
+    private static final SelenideElement ACTIVITY_TYPE_SELECT = findSelectById("ActivityType");
+    private static final SelenideElement DIST_TYPE_SELECT = findSelectById("DistType");
+    private static final SelenideElement HOW_FEEL_SELECT = findSelectById("HowFeel");
+    private static final SelenideElement PER_EFFORT_SELECT = findSelectById("PerEffort");
+    private static final SelenideElement ADD_WORKOUT_BUTTON = findElementById("saveButton");
 
     public void addNewQuick(Quick quick) {
         DATE_INPUT.setValue(quick.getWorkoutDate());

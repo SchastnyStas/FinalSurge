@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 import listeners.TestListener;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,7 @@ public class BaseTest {
     protected NewQuickAddSteps newQuickAddSteps;
     protected CalendarSteps calendarSteps;
     protected NewFullAddSteps newFullAddSteps;
-    protected TopNavigationSteps workoutDetailsSteps;
+    protected TopNavigationSteps topNavigationSteps;
     protected SettingsNavigateSteps settingsNavigateSteps;
     protected MainLogoNavigateSteps mainLogoNavigateSteps;
     protected CurrentDateSteps currentDateSteps;
@@ -45,7 +46,7 @@ public class BaseTest {
         newQuickAddSteps = new NewQuickAddSteps();
         calendarSteps = new CalendarSteps();
         newFullAddSteps = new NewFullAddSteps();
-        workoutDetailsSteps = new TopNavigationSteps();
+        topNavigationSteps = new TopNavigationSteps();
         settingsNavigateSteps = new SettingsNavigateSteps();
         mainLogoNavigateSteps = new MainLogoNavigateSteps();
         currentDateSteps = new CurrentDateSteps();
@@ -78,5 +79,13 @@ public class BaseTest {
     @Step("Close web driver")
     public void endTest() {
         getWebDriver().quit();
+    }
+
+    @AfterMethod(onlyForGroups = {"profileImage"})
+    @Step("Clean up profile image after test")
+    public void cleanUpProfileImage() {
+        changeProfileSettingsSteps.refreshEditPage();
+        Selenide.sleep(3000);
+        changeProfileSettingsSteps.removePicture();
     }
 }

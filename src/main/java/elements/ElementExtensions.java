@@ -6,40 +6,40 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class ElementExtensions {
 
-    public static SelenideElement getElementByHref(String href) {
+    public static SelenideElement findElementByHref(String href) {
         return $x("//*[@href='" + href + "']");
     }
 
-    public static SelenideElement getButtonByText(String text) {
+    public static SelenideElement findButtonByText(String text) {
         return $x("//button[text()='" + text + "']");
     }
 
-    public static SelenideElement getElementById(String id) {
+    public static SelenideElement findElementById(String id) {
 
         return $x("//*[@id='" + id + "']");
     }
 
-    public static SelenideElement getInputByName(String name) {
+    public static SelenideElement findInputByName(String name) {
         return $x("//input[@name='" + name + "']");
     }
 
-    public static SelenideElement getSelectById(String id) {
+    public static SelenideElement findSelectById(String id) {
         return $x("//select[@id='" + id + "']");
     }
 
-    public static SelenideElement getElementByDataCode(String dataCode) {
+    public static SelenideElement findElementByDataCode(String dataCode) {
         return $x("//*[@data-code='" + dataCode + "']");
     }
 
-    public static SelenideElement getElementByClass(String byClass) {
+    public static SelenideElement findElementByClass(String byClass) {
         return $x("//*[@class='" + byClass + "']");
     }
 
-    public static SelenideElement getElementByDataLabel(String dataLabel) {
+    public static SelenideElement findElementByDataLabel(String dataLabel) {
         return $x("//*[@data-label='" + dataLabel + "']");
     }
 
-    public static SelenideElement getLabelByText(String text) {
+    public static SelenideElement findLabelByText(String text) {
         return $x("//label[span[text()='" + text + "']]");
     }
 }

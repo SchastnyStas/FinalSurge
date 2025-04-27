@@ -50,7 +50,7 @@ public class QuickWorkoutTest extends BaseTest {
         String workoutDay = String.valueOf(date.getDayOfMonth());
 
         newQuickAddSteps.createNewQuick(quick);
-        workoutDetailsSteps.isElementVisibleSteps();
+        topNavigationSteps.goToCalendarSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
         Assert.assertFalse(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
     }

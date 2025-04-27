@@ -29,7 +29,7 @@ public class FullWorkoutTest extends BaseTest {
         String workoutDay = String.valueOf(date.getDayOfMonth());
 
         newFullAddSteps.addNewFull(full);
-        workoutDetailsSteps.isElementVisibleSteps();
+        topNavigationSteps.goToCalendarSteps();
         Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
         calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
     }
@@ -51,7 +51,7 @@ public class FullWorkoutTest extends BaseTest {
         String workoutDay = String.valueOf(date.getDayOfMonth());
 
         newFullAddSteps.addNewFull(full);
-        workoutDetailsSteps.isElementVisibleSteps();
+        topNavigationSteps.goToCalendarSteps();
         calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
         Assert.assertFalse(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
     }

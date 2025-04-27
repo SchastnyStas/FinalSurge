@@ -8,28 +8,40 @@ import java.io.File;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.*;
-import static elements.ElementExtensions.getElementById;
-import static elements.ElementExtensions.getInputByName;
+import static elements.ElementExtensions.findElementById;
+import static elements.ElementExtensions.findInputByName;
 
 public class EditProfilePage extends TopNavigationMenu {
-    public static final SelenideElement GET_FIRST_NAME_INPUT = getInputByName("fname");
-    public static final SelenideElement CLICK_SAVE_CHANGES_BUTTON = getElementById(
+    private static final SelenideElement GET_FIRST_NAME_INPUT = findInputByName("fname");
+    private static final SelenideElement CLICK_SAVE_CHANGES_BUTTON = findElementById(
             "saveButtonProfile");
-    public static final SelenideElement CLICK_CHANGE_IMAGE_BUTTON = getElementById(
+    private static final SelenideElement CLICK_CHANGE_IMAGE_BUTTON = findElementById(
             "EditProfilePicOther");
-    public static final SelenideElement UPLOAD_BUTTON = $x("//*[@id='NextStep' and text()='Upload']");
-    public static final SelenideElement SAVE_BUTTON = $x("//*[@id='NextStep' and text()='Save']");
-    public static final SelenideElement FILE_INPUT = $("input[type='file']");
-    public static final SelenideElement PROFILE_PICTURE = getElementById("LayoutProfilePic");
-    public static final SelenideElement REMOVE_IMAGE_BUTTON = getElementById("del-pic");
-    public static final SelenideElement REMOVE_IMAGE_OK_BUTTON = $x("//*[@class='modal-footer']//*[@class='btn btn-primary']");
+    private static final SelenideElement UPLOAD_BUTTON = $x("//*[@id='NextStep' and text()='Upload']");
+    private static final SelenideElement SAVE_BUTTON = $x("//*[@id='NextStep' and text()='Save']");
+    private static final SelenideElement FILE_INPUT = $("input[type='file']");
+    private static final SelenideElement PROFILE_PICTURE = findElementById("LayoutProfilePic");
+    private static final SelenideElement REMOVE_IMAGE_BUTTON = findElementById("del-pic");
+    private static final SelenideElement REMOVE_IMAGE_OK_BUTTON = $x("//*[@class='modal-footer']//*[@class='btn btn-primary']");
 
+    /**
+     * Pass new first name.
+     *
+     * @param newFirstName the first name
+     * @return edit profile page
+     */
     public EditProfilePage changeFirstName(String newFirstName) {
         GET_FIRST_NAME_INPUT.setValue(newFirstName);
         CLICK_SAVE_CHANGES_BUTTON.click();
         return this;
     }
 
+    /**
+     * Uploads a new user image and saves profile changes.
+     *
+     * @param picture the image
+     * @return current page {@link EditProfilePage} after image update
+     */
     public EditProfilePage changeImage(String picture) {
         CLICK_CHANGE_IMAGE_BUTTON.click();
 
@@ -45,7 +57,12 @@ public class EditProfilePage extends TopNavigationMenu {
         return this;
     }
 
-    public String getImgScr() {
+    /**
+     * Returns a link (URL) to the user's profile image.
+     *
+     * @return attribute value {@code src} at the profile picture element
+     */
+    public String getImageScr() {
         return PROFILE_PICTURE.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .getAttribute("src");
     }

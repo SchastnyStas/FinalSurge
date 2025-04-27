@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static tests.TestConstants.DATE_TIME_FORMATTER;
 
@@ -32,7 +31,7 @@ public class WorkoutListTest extends BaseTest {
 
         newQuickAddSteps.createNewQuick(quick);
         softAssert.assertTrue(dashboardSteps.isEventVisibleInRecentPastWorkout(quick.getWorkoutName()));
-        workoutDetailsSteps.isElementVisibleSteps();
+        topNavigationSteps.goToCalendarSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
         softAssert.assertFalse(dashboardSteps.isEventVisibleInRecentPastWorkout(quick.getWorkoutName()));
         softAssert.assertAll();
@@ -56,7 +55,7 @@ public class WorkoutListTest extends BaseTest {
 
         newQuickAddSteps.createNewQuick(quick);
         softAssert.assertTrue(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
-        workoutDetailsSteps.isElementVisibleSteps();
+        topNavigationSteps.goToCalendarSteps();
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName()).goToDashboardPage();
         softAssert.assertFalse(dashboardSteps.isEventVisibleInUpcomingWorkout(quick.getWorkoutName()));
         softAssert.assertAll();

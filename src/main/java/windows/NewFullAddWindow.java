@@ -9,15 +9,15 @@ import static elements.ElementExtensions.*;
 
 public class NewFullAddWindow extends BasePage {
 
-    public static final SelenideElement DATE_INPUT = getInputByName("WorkoutDate");
-    public static final SelenideElement TIME_OF_DAY = getInputByName("WorkoutTime");
-    public static final SelenideElement WORKOUT_NAME_INPUT = getInputByName("Name");
-    public static final SelenideElement DISTANCE_INPUT = getInputByName("Distance");
-    public static final SelenideElement ELEVATION_GAIN_INPUT = getInputByName("EGain");
-    public static final SelenideElement ELEVATION_LOSS_INPUT = getInputByName("ELoss");
-    public static final SelenideElement DIST_TYPE_SELECT = getSelectById("DistType");
-    public static final SelenideElement PER_EFFORT_SELECT = getSelectById("PerEffort");
-    public static final SelenideElement ADD_WORKOUT_BUTTON = getElementById("saveButton");
+    private static final SelenideElement DATE_INPUT = findInputByName("WorkoutDate");
+    private static final SelenideElement TIME_OF_DAY = findInputByName("WorkoutTime");
+    private static final SelenideElement WORKOUT_NAME_INPUT = findInputByName("Name");
+    private static final SelenideElement DISTANCE_INPUT = findInputByName("Distance");
+    private static final SelenideElement ELEVATION_GAIN_INPUT = findInputByName("EGain");
+    private static final SelenideElement ELEVATION_LOSS_INPUT = findInputByName("ELoss");
+    private static final SelenideElement DIST_TYPE_SELECT = findSelectById("DistType");
+    private static final SelenideElement PER_EFFORT_SELECT = findSelectById("PerEffort");
+    private static final SelenideElement ADD_WORKOUT_BUTTON = findElementById("saveButton");
 
     public void addNewFull(Full full) {
         DATE_INPUT.setValue(full.getWorkoutDate());
@@ -27,7 +27,7 @@ public class NewFullAddWindow extends BasePage {
         ELEVATION_GAIN_INPUT.setValue(full.getElevationGain());
         ELEVATION_LOSS_INPUT.setValue(full.getElevationLoss());
         DIST_TYPE_SELECT.shouldBe(Condition.visible).selectOption(full.getDistType().getValue());
-        getLabelByText(full.getHowFeel().getValue()).click();
+        findLabelByText(full.getHowFeel().getValue()).click();
         PER_EFFORT_SELECT.shouldBe(Condition.visible).selectOption(full.getPerEffort().getValue());
         ADD_WORKOUT_BUTTON.click();
     }
