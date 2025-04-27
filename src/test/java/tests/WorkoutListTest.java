@@ -16,8 +16,9 @@ public class WorkoutListTest extends BaseTest {
     @Test(description = "Check event is displayed in recent past workouts")
     public void checkRecentWorkouts() {
         SoftAssert softAssert = new SoftAssert();
+        String pastDate = LocalDate.now().minusDays(1).format(DATE_TIME_FORMATTER);
         Quick quick = Quick.builder()
-                .workoutDate("4/10/2025")
+                .workoutDate(pastDate)
                 .workoutTime("12:00 PM")
                 .activityType("Run")
                 .workoutName("")
@@ -40,8 +41,9 @@ public class WorkoutListTest extends BaseTest {
     @Test(description = "Check event is displayed in upcoming workouts")
     public void checkUpcomingWorkouts() {
         SoftAssert softAssert = new SoftAssert();
+        String futureDate = LocalDate.now().plusDays(1).format(DATE_TIME_FORMATTER);
         Quick quick = Quick.builder()
-                .workoutDate("4/30/2025")
+                .workoutDate(futureDate)
                 .workoutTime("12:00 PM")
                 .activityType("Run")
                 .workoutName("")
