@@ -75,12 +75,6 @@ public class BaseTest {
         loginSteps.login(LOGIN_URL, EMAIL, PASSWORD);
     }
 
-    @AfterMethod
-    @Step("Close web driver")
-    public void endTest() {
-        getWebDriver().quit();
-    }
-
     @AfterMethod(onlyForGroups = {"profileImage"})
     @Step("Clean up profile image after test")
     public void cleanUpProfileImage() {
@@ -88,4 +82,12 @@ public class BaseTest {
         Selenide.sleep(3000);
         changeProfileSettingsSteps.removePicture();
     }
+
+    @AfterMethod
+    @Step("Close web driver")
+    public void endTest() {
+        getWebDriver().quit();
+    }
+
+
 }

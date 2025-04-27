@@ -41,7 +41,7 @@ public class WorkoutListTest extends BaseTest {
     public void checkUpcomingWorkouts() {
         SoftAssert softAssert = new SoftAssert();
         Quick quick = Quick.builder()
-                .workoutDate("4/25/2025")
+                .workoutDate("4/30/2025")
                 .workoutTime("12:00 PM")
                 .activityType("Run")
                 .workoutName("")
