@@ -1,0 +1,66 @@
+package tests;
+
+import enums.DistType;
+import enums.HowFeel;
+import enums.PerceivedEffort;
+import object.Full;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class FullWorkoutTest extends BaseTest {
+    Full full;
+    LocalDate date;
+    String workoutDay;
+
+    @Test(description = "Check full workout event can be created and displayed for day")
+    public void fullAddCreate() {
+        full = Full.builder()
+                .workoutDate("4/10/2025")
+                .workoutTime("06:30 AM")
+                .workoutName("")
+                .distance("")
+                .distType(DistType.MI)
+                .elevationGain("")
+                .elevationLoss("")
+                .howFeel(HowFeel.GOOD)
+                .perEffort(PerceivedEffort.FIVEMODERATE)
+                .build();
+        date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
+        workoutDay = String.valueOf(date.getDayOfMonth());
+
+        newFullAddSteps.addNewFull(full);
+        topNavigationSteps.goToCalendarSteps();
+        Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
+    }
+
+    @AfterMethod(groups = "fullAddCreate")
+    public void deleteEventForToday(){
+        calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
+    }
+
+    @Test(description = "Delete full workout event for the day and check it's not displayed")
+    public void fullAddDelete() {
+        Full full = Full.builder()
+                .workoutDate("4/5/2025")
+                .workoutTime("06:30 AM")
+                .workoutName("")
+                .distance("")
+                .distType(DistType.MI)
+                .elevationGain("")
+                .elevationLoss("")
+                .howFeel(HowFeel.GREAT)
+                .perEffort(PerceivedEffort.THREELIGHT)
+                .build();
+        LocalDate date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
+        String workoutDay = String.valueOf(date.getDayOfMonth());
+
+        newFullAddSteps.addNewFull(full);
+        topNavigationSteps.goToCalendarSteps();
+        calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
+        Assert.assertFalse(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
+    }
+}

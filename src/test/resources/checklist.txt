@@ -1,0 +1,15 @@
+Change profile first name
+Change profile image
+Send message to Customer Support
+Send customer feedback
+Check full workout event can be created and displayed for day
+Delete full workout event for the day and check it's not displayed
+Login user with valid credentials
+Check the logout process
+Check quick workout event can be created and displayed for day
+Delete quick workout event for the day and check it's not displayed
+Go to dashboard page via main logo and check if page is loaded
+Go to settings page and check if page is loaded
+Check that the current date is displayed in top bar
+Check event is displayed in recent past workouts
+Check event is displayed in upcoming workouts
