@@ -12,6 +12,6 @@ public class CustomerSupportSteps extends BaseSteps {
 
     @Step("Check success message is displayed")
     public boolean checkSuccessMessage() {
-        return customerSupportPage.isDisplayedTextAfterSend();
+        return customerSupportPage.IsTextDisplayedAfterSend();
     }
 }

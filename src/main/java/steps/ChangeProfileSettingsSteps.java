@@ -26,7 +26,7 @@ public class ChangeProfileSettingsSteps extends BaseSteps {
 
     @Step("Check the visibility of the image")
     public String checkVisibilityImage() {
-        return editProfilePage.getImageScr();
+        return editProfilePage.getImageSrc();
     }
 
     @Step("Refresh page")

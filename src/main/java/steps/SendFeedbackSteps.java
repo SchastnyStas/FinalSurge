@@ -12,6 +12,6 @@ public class SendFeedbackSteps extends BaseSteps {
 
     @Step("Check success message is displayed")
     public boolean checkSuccessMessageIsDisplayed() {
-        return feedbackPage.isDisplayedTextAfterSend();
+        return feedbackPage.isTextDisplayedAfterSend();
     }
 }

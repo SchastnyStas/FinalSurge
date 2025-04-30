@@ -1,9 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.slf4j.Slf4j;
 
 import static elements.ElementExtensions.findElementByClass;
 
+@Slf4j
 public class LogoutPage extends BasePage {
     private static final SelenideElement GET_LOGOUT_TEXT = findElementByClass("heading_main");
 
@@ -14,6 +16,7 @@ public class LogoutPage extends BasePage {
      *         {@code false} otherwise
      */
     public boolean checkIfUserIsLoggedOut() {
+        log.info("Checking is user is logged out.");
         return GET_LOGOUT_TEXT.isDisplayed();
     }
 }

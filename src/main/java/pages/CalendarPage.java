@@ -2,12 +2,14 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.slf4j.Slf4j;
 import windows.NewQuickAddWindow;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static elements.ElementExtensions.findElementByClass;
 import static elements.ElementExtensions.findElementById;
 
+@Slf4j
 public class CalendarPage extends TopNavigationMenu {
     private static final SelenideElement QUICK_ADD_BUTTON = findElementById("QuickAddToggle");
     private static final String EVENT_PRESENT_DETAILS = "//*[@data-day='%s']//*[@data" +
@@ -24,6 +26,7 @@ public class CalendarPage extends TopNavigationMenu {
      */
     public NewQuickAddWindow goToNewQuickAddWindow() {
         QUICK_ADD_BUTTON.click();
+        log.info("Create a new quick window is open.");
         return new NewQuickAddWindow();
     }
 
@@ -34,6 +37,7 @@ public class CalendarPage extends TopNavigationMenu {
      */
     public FullAddPage goToFullAddPage() {
         FULL_ADD_BUTTON.click();
+        log.info("User is redirected to full add page.");
         return new FullAddPage();
     }
 
@@ -45,6 +49,7 @@ public class CalendarPage extends TopNavigationMenu {
      * @return {@code true} if the event is displayed for the given day; {@code false} otherwise
      */
     public boolean checkEventIsPresentForDay(String day, String event) {
+        log.info("Event '{}' is visible for day: {}", event, day);
         return $x(String.format(EVENT_PRESENT_DETAILS, day, event))
                 .isDisplayed();
     }
@@ -62,6 +67,7 @@ public class CalendarPage extends TopNavigationMenu {
         QUICK_DELETE_BUTTON.click();
         QUICK_DELETE_CONFIRM_BUTTON.click();
         eventElement.shouldNotBe(Condition.visible);
+        log.info("Event '{}' is deleted for day: {}", event, day);
         return new CalendarPage();
     }
 
@@ -73,6 +79,7 @@ public class CalendarPage extends TopNavigationMenu {
      */
     public DashboardPage goToDashboardPage() {
         GO_TO_DASHBOARD_BUTTON.scrollIntoCenter().click();
+        log.info("Dashboard page is open.");
         return new DashboardPage();
     }
 }

@@ -28,6 +28,7 @@ public class DashboardPage extends TopNavigationMenu {
      * @return {@code true}, if the button is visible, otherwise{@code false}.
      */
     public boolean isCalendarButtonVisible() {
+        log.info("The calendar button is displayed.");
         return VIEW_CALENDAR_PROJECT_BUTTON.shouldBe(Condition.visible)
                 .isDisplayed();
     }
@@ -41,6 +42,7 @@ public class DashboardPage extends TopNavigationMenu {
      */
     public boolean checkUpcomingWorkoutsVisible(String workoutName) {
         UPCOMING_WORKOUTS_BUTTON.shouldBe(Condition.visible).click();
+        log.info("The upcoming workout event is displayed.");
         return $x(String.format(GET_UPCOMING_WORKOUTS_EVENT, workoutName)).is(Condition.visible, Duration.of(2, SECONDS));
     }
 
@@ -53,6 +55,7 @@ public class DashboardPage extends TopNavigationMenu {
      */
     public boolean openRecentPastWorkoutsList(String workoutName) {
         RECENT_PAST_WORKOUTS_BUTTON.shouldBe(Condition.visible).click();
+        log.info("The recent past workout event is displayed.");
         return $x(String.format(GET_RECENT_PAST_WORKOUTS_EVENT, workoutName)).is(Condition.visible, Duration.of(2, SECONDS));
     }
 
@@ -79,6 +82,7 @@ public class DashboardPage extends TopNavigationMenu {
      */
     public FeedbackPage goToFeedback() {
         CLICK_FEEDBACK_BUTTON.click();
+        log.info("Went to the feedback page.");
         return new FeedbackPage();
     }
 
@@ -89,6 +93,7 @@ public class DashboardPage extends TopNavigationMenu {
      */
     public CustomerSupportPage goToSupportPage() {
         CLICK_CUSTOMER_SUPPORT_BUTTON.click();
+        log.info("Went to the customer support page.");
         return new CustomerSupportPage();
     }
 }

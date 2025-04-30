@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.time.Duration;
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static elements.ElementExtensions.findElementById;
 import static elements.ElementExtensions.findInputByName;
 
+@Slf4j
 public class EditProfilePage extends TopNavigationMenu {
     private static final SelenideElement GET_FIRST_NAME_INPUT = findInputByName("fname");
     private static final SelenideElement CLICK_SAVE_CHANGES_BUTTON = findElementById(
@@ -33,6 +35,7 @@ public class EditProfilePage extends TopNavigationMenu {
     public EditProfilePage changeFirstName(String newFirstName) {
         GET_FIRST_NAME_INPUT.setValue(newFirstName);
         CLICK_SAVE_CHANGES_BUTTON.click();
+        log.info("Change user name for: {}", newFirstName);
         return this;
     }
 
@@ -52,8 +55,10 @@ public class EditProfilePage extends TopNavigationMenu {
         switchTo().defaultContent();
 
         UPLOAD_BUTTON.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
+        log.info("Wait until image is loaded.");
         Selenide.sleep(5000);
         SAVE_BUTTON.shouldBe(Condition.visible, Duration.ofSeconds(10)).click();
+        log.info("User image has been changed.");
         return this;
     }
 
@@ -62,7 +67,7 @@ public class EditProfilePage extends TopNavigationMenu {
      *
      * @return attribute value {@code src} at the profile picture element
      */
-    public String getImageScr() {
+    public String getImageSrc() {
         return PROFILE_PICTURE.shouldBe(Condition.visible, Duration.ofSeconds(10))
                 .getAttribute("src");
     }
@@ -74,6 +79,7 @@ public class EditProfilePage extends TopNavigationMenu {
      */
     public EditProfilePage refreshEditPage() {
         Selenide.refresh();
+        log.info("Page is refreshed");
         return new EditProfilePage();
     }
 
@@ -83,6 +89,7 @@ public class EditProfilePage extends TopNavigationMenu {
     public void removeProfileImage() {
         REMOVE_IMAGE_BUTTON.click();
         REMOVE_IMAGE_OK_BUTTON.click();
+        log.info("User image has been removed.");
     }
 }
 

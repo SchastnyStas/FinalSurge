@@ -2,11 +2,13 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Selenide.open;
 import static elements.ElementExtensions.findButtonByText;
 import static elements.ElementExtensions.findInputByName;
 
+@Slf4j
 public class LoginPage extends TopNavigationMenu {
     private static final SelenideElement SIGN_IN_BUTTON = findButtonByText("Login");
     private static final SelenideElement EMAIL_INPUT = findInputByName("login_name");
@@ -20,6 +22,7 @@ public class LoginPage extends TopNavigationMenu {
      */
     public LoginPage openLoginPage(String url) {
         open(url);
+        log.info("Login page is opened.");
         return this;
     }
 
@@ -30,6 +33,7 @@ public class LoginPage extends TopNavigationMenu {
      */
     public LoginPage waitForPageToLoad() {
         SIGN_IN_BUTTON.shouldBe(Condition.visible);
+        log.info("Wait until login page is loaded.");
         return this;
     }
 
@@ -45,6 +49,7 @@ public class LoginPage extends TopNavigationMenu {
         EMAIL_INPUT.setValue(email);
         PASSWORD_INPUT.setValue(password);
         SIGN_IN_BUTTON.click();
+        log.info("User is logged in.");
         return new DashboardPage();
     }
 }

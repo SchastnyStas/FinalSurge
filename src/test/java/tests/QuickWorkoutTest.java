@@ -5,16 +5,20 @@ import enums.HowFeel;
 import enums.PerceivedEffort;
 import object.Quick;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class QuickWorkoutTest extends BaseTest {
+    Quick quick;
+    LocalDate date;
+    String workoutDay;
 
     @Test(description = "Check quick workout event can be created and displayed for day")
     public void quickAddCreate() {
-        Quick quick = Quick.builder()
+        quick = Quick.builder()
                 .workoutDate("4/17/2025")
                 .workoutTime("12:00 PM")
                 .activityType("Run")
@@ -24,12 +28,16 @@ public class QuickWorkoutTest extends BaseTest {
                 .howFeel(HowFeel.GOOD)
                 .perEffort(PerceivedEffort.FOURMODERATE)
                 .build();
-        LocalDate date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
+        date = LocalDate.parse(quick.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d" +
                 "/yyyy"));
-        String workoutDay = String.valueOf(date.getDayOfMonth());
+        workoutDay = String.valueOf(date.getDayOfMonth());
 
         newQuickAddSteps.createNewQuick(quick);
         Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, quick.getWorkoutName()));
+    }
+
+    @AfterMethod(groups = "quickAddCreate")
+    public void deleteEventForToday() {
         calendarSteps.deleteEventForDay(workoutDay, quick.getWorkoutName());
     }
 

@@ -5,16 +5,20 @@ import enums.HowFeel;
 import enums.PerceivedEffort;
 import object.Full;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class FullWorkoutTest extends BaseTest {
+    Full full;
+    LocalDate date;
+    String workoutDay;
 
     @Test(description = "Check full workout event can be created and displayed for day")
     public void fullAddCreate() {
-        Full full = Full.builder()
+        full = Full.builder()
                 .workoutDate("4/10/2025")
                 .workoutTime("06:30 AM")
                 .workoutName("")
@@ -25,12 +29,16 @@ public class FullWorkoutTest extends BaseTest {
                 .howFeel(HowFeel.GOOD)
                 .perEffort(PerceivedEffort.FIVEMODERATE)
                 .build();
-        LocalDate date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
-        String workoutDay = String.valueOf(date.getDayOfMonth());
+        date = LocalDate.parse(full.getWorkoutDate(), DateTimeFormatter.ofPattern("M/d/yyyy"));
+        workoutDay = String.valueOf(date.getDayOfMonth());
 
         newFullAddSteps.addNewFull(full);
         topNavigationSteps.goToCalendarSteps();
         Assert.assertTrue(calendarSteps.isElementVisibleSteps(workoutDay, full.getWorkoutName()));
+    }
+
+    @AfterMethod(groups = "fullAddCreate")
+    public void deleteEventForToday(){
         calendarSteps.deleteEventForDay(workoutDay, full.getWorkoutName());
     }
 

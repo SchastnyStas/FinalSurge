@@ -2,10 +2,12 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import lombok.extern.slf4j.Slf4j;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static elements.ElementExtensions.findElementByHref;
 
+@Slf4j
 public class BasePage {
     private static final SelenideElement FINAL_SURGE_LOGO = $x("//*[@class='main-logo']//img");
     private static final SelenideElement LOGOUT_BUTTON = findElementByHref("logout.cshtml");
@@ -19,6 +21,7 @@ public class BasePage {
      */
     public DashboardPage clickOnMainLogo() {
         FINAL_SURGE_LOGO.click();
+        log.info("User is redirected to dashboard page.");
         return new DashboardPage();
     }
 
@@ -26,6 +29,7 @@ public class BasePage {
      * Clicks on the log out button.
      */
     public void clickLogoutButton() {
+        log.info("Logout is user.");
         LOGOUT_BUTTON.click();
     }
 
@@ -36,6 +40,7 @@ public class BasePage {
      */
     public SettingsPage goToSettingPage() {
         GO_TO_SETTINGS_BUTTON.shouldBe(Condition.visible).click();
+        log.info("Settings page is opened.");
         return new SettingsPage();
     }
 }
