@@ -29,7 +29,7 @@ public class BasePage {
      * Clicks on the log out button.
      */
     public void clickLogoutButton() {
-        log.info("Logout is user.");
+        log.info("User logout.");
         LOGOUT_BUTTON.click();
     }
 
